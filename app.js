@@ -19,13 +19,11 @@ app.use("/admin/services", require("./routes/serviceRoutes"));
 app.use("/admin/works", require("./routes/workRoutes"));
 app.use("/admin/carousels", require("./routes/carouselRoutes"));
 
-//DB Connection
-const MONGO_URL =
-  "mongodb+srv://demo:demo@cluster0.rn8dt.mongodb.net/portfolio?retryWrites=true&w=majority";
+// //DB Connection
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(MONGO_URL, {
+    await mongoose.connect(process.env.MONGODB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
